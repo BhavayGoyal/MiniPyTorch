@@ -1,12 +1,29 @@
-#include <bits/stdc++.h>
-
-import temp;
-using namespace std;
+#include "Tensor.h"
 
 int main() {
-    int a = 5, b = 10;
-    int ans = add(a, b);
+    // int n, m, k; cin >> n >> m >> k;
+    // Tensor a({n, m, k}); 
+    // for (int i = 0; i < n; i++) {
+    //     for (int j = 0; j < m; j++) {
+    //         for (int K = 0; K < k; K++) {
+    //             a({i, j, K}) = (m*k)*i + k*j + K;
+    //         }
+    //     }
+    // }
 
-    cout << ans << endl;
+    int n, m; cin >> n >> m;
+    Tensor a({n, m});
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            a({i, j}) = m*i + j;
+        }
+    }
+
+    Tensor aT = a.T();
+    a.print();
+    aT.print();
+    a.matMul(aT).print();
+
     return 0;
 }
